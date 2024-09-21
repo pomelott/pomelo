@@ -1,0 +1,20 @@
+{
+  "name": "pomelo",
+  "version": "1.0.0",
+  "description": "a set of utils for front-end development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utils",
+    "event-emitter",
+    "event-emitter-tree"
+  ],
+  "author": "pomelott",
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "turbo": "^2.1.1"
+  }
+}
