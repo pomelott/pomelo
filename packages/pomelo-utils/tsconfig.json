@@ -7,12 +7,15 @@
       "preserveConstEnums": true,
       "sourceMap": true,
       "esModuleInterop": true,
-      "moduleResolution": "Node"
+      "moduleResolution": "node",
+      "declaration": true,
+      "declarationDir": "./dist/types"
     },
     "include": [
-      "src/**/*"
+      "src/**/*.ts"
     ],
     "exclude": [
-      "node_modules"
+      "node_modules",
+      "tests"
     ]
 }

@@ -14,18 +14,23 @@ describe('sum module', () => {
     footballNode.addChild(footballShootNode);
     basketballNode.addChild(basketballShoootNode);
     basketballNode.addChild(basketballDefenceNode);
-    console.log(peNode.forDFS((node) => {
-        console.log('n', node);
-    }));
+
+    const dfsQueue: string[] = [];
+    peNode.forDFS((node) => {
+        dfsQueue.push(node.getName());
+    })
+    expect(dfsQueue).toEqual(['pe', 'football', 'footballShoot', 'basketball', 'basketballShoot', 'basketballDefence'])
+
+
+    const bfsQueue: string[] = [];
+    peNode.forBFS((node) => {
+        bfsQueue.push(node.getName());
+    })
+    expect(bfsQueue).toEqual(['pe', 'football', 'basketball', 'footballShoot', 'basketballShoot', 'basketballDefence'])
+
+    expect(peNode.getDepth()).toBe(3);
+
+    const emptyChildrenNode = new TreeNode('empty');
+    expect(emptyChildrenNode.getDepth()).toBe(1);
   });
 });
-
-// {
-//     info: {},
-//     children: {
-//         aa: {
-//             info: {},
-//             children: {}
-//         }
-//     }
-// }

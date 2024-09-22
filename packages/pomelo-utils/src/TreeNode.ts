@@ -1,11 +1,12 @@
 import { Node } from './Node';
-import { TTreeNodeCallBack } from './types';
+import { type TTreeNodeCallBack } from './types';
 
 export class TreeNode extends Node {
     private children: Record<string, TreeNode>;
     private seqQueue: string[];
     private depth: number;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor (name: string, info?: Record<string, any>) {
         super(name, info);
         this.children = {};
@@ -25,14 +26,11 @@ export class TreeNode extends Node {
 
     forDFS (callback?: TTreeNodeCallBack) {
         const dfs = (node, dep) => {
-            if (!node) {
-                return dep;
-            }
             if (callback) {
                 callback(node);
             }
             let maxDepth = dep;
-            Object.keys(node?.children || [])?.forEach((key) => {
+            Object.keys(node.children).forEach((key) => {
                 const currNode = node.children[key];
                 maxDepth = Math.max(maxDepth, dfs(currNode, dep + 1));
             })
@@ -43,9 +41,6 @@ export class TreeNode extends Node {
 
     forBFS (callback) {
         const bfs = (root) => {
-            if (!root) {
-                return;
-            }
             const queue = [root];
             while (queue.length) {
                 const currNode = queue.shift();

@@ -1,10 +1,19 @@
 {
   "name": "pomelo",
   "version": "1.0.0",
-  "description": "a set of utils for front-end development.",
+  "description": "a set of utils for my front-end development.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx turbo lint",
+    "test": "npx turbo test",
+    "build": "npx turbo build",
+    "check-build": "npm run lint && npm run test && npm run build",
+    "changeset": "npm run check-build && npx changeset",
+    "version": "npx changeset version",
+    "publish": "npx changeset publish",
+    "pre": "npx changeset pre enter alpha",
+    "exit": "npx changeset pre exit",
+    "post-publish": "git add . && git commit -m 'script:publish' && git push origin master"
   },
   "keywords": [
     "utils",
@@ -14,7 +23,9 @@
   "author": "pomelott",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.27.8",
     "@jest/globals": "^29.7.0",
     "turbo": "^2.1.1"
-  }
+  },
+  "packageManager": "pnpm@8.15.9"
 }
